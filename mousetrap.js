@@ -944,7 +944,10 @@
     };
 
     // expose mousetrap to the global object
-    window.Mousetrap = Mousetrap;
+    if(typeof module != 'undefined' && module.exports)
+        module.exports = Mousetrap;
+    else
+        window.Mousetrap = Mousetrap;
 
     // expose mousetrap as an AMD module
     if (typeof define === 'function' && define.amd) {
